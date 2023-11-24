@@ -1,48 +1,104 @@
 package com.example.pizzeria.persistence.entity;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-/**
- * Entidad que representa una pizza en la base de datos.
- */
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "pizza")
-@Getter
-@Setter
-@NoArgsConstructor
 public class PizzaEntity {
-
-    // Identificador único de la pizza
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pizza", nullable = false)
     private Integer idPizza;
 
-    // Nombre de la pizza (no puede ser nulo, longitud máxima de 30 caracteres y debe ser único)
     @Column(nullable = false, length = 30, unique = true)
     private String name;
 
-    // Descripción de la pizza (no puede ser nula, longitud máxima de 150 caracteres)
     @Column(nullable = false, length = 150)
     private String description;
 
-    // Precio de la pizza (no puede ser nulo, con precisión de 5 dígitos y 2 decimales)
     @Column(nullable = false, columnDefinition = "Decimal(5,2)")
     private Double price;
 
-    // Indica si la pizza es vegetariana (puede ser nulo)
     @Column(columnDefinition = "TINYINT")
     private Boolean vegetarian;
 
-    // Indica si la pizza es vegana (puede ser nulo)
     @Column(columnDefinition = "TINYINT")
     private Boolean vegan;
 
-    // Indica si la pizza está disponible (no puede ser nulo)
     @Column(columnDefinition = "TINYINT", nullable = false)
     private Boolean available;
 
+    // Constructor sin argumentos
+    public PizzaEntity() {
+        // Puedes dejarlo vacío o agregar lógica personalizada si es necesario
+    }
+
+    // Métodos Getter y Setter para idPizza
+    public Integer getIdPizza() {
+        return idPizza;
+    }
+
+    public void setIdPizza(Integer idPizza) {
+        this.idPizza = idPizza;
+    }
+
+    // Métodos Getter y Setter para name
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Métodos Getter y Setter para description
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    // Métodos Getter y Setter para price
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    // Métodos Getter y Setter para vegetarian
+    public Boolean getVegetarian() {
+        return vegetarian;
+    }
+
+    public void setVegetarian(Boolean vegetarian) {
+        this.vegetarian = vegetarian;
+    }
+
+    // Métodos Getter y Setter para vegan
+    public Boolean getVegan() {
+        return vegan;
+    }
+
+    public void setVegan(Boolean vegan) {
+        this.vegan = vegan;
+    }
+
+    // Métodos Getter y Setter para available
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
 }
