@@ -12,13 +12,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class OrderItemEntity {
+
+
+    @Id
+    @Column(name = "id_order", nullable = false)
+    private Integer idOrder;
+
     @Id
     @Column(name = "id_item", nullable = false)
     private Integer idItem;
-
-
-    @Column(name = "id_order", nullable = false)
-    private Integer idOrder;
 
 
     @Column(name = "id_pizza", nullable = false)
